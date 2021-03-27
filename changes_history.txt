@@ -1,0 +1,98 @@
+
+v3.0.0 (Major)
+==============
+
+1) Updated the nine CypReact CYP450 models
+2) Integrated the CyProduct (unpublished) series of CYP450 predictive models. CyProduct is a software tool that predict CYP450 metabolites using a Bond of Metabolism approach. In contrast to the Site of Metabolism, This approach represents the reaction center as a bond, and not an atom (as do the sites of metabolism).
+3) Defined three modes for CYP450-catalyzed metabolism prediction. 1) CypReact + BioTransformer rules; 2) CyProduct only; 3) Combined: CypReact + BioTransformer rules + CyProducts. The default mode is 1. The CYP450 mode is applicable for any option where CYP450 metabolism is predicted (e.g.: cyp450, allhuman, superbio, and user-defined sequences).
+4) Fixed a bug w.r.t metbaolit identifiation from user-defined sequences.
+5) Changing the license to LGPL v3
+
+v2.0.3
+========
+1) ) Added several chemical classes of conjugates, and updated the function AssignChemicalClasses
+2) Updated ESSpecificityPredictor's isValidCyp450Substrate function by extending the list of excluded chemical classes.
+
+v2.0.2
+========
+
+1) Reimplemented the biotransformer sequence to allow for multiple simulation of the same types (e.g. cyp450:1; ecbased:1; cyp450:1).
+2) Added a BiotransformerSequenceStep (e.g. cyp450:1). Updated the MetaboliteFinder to use the new changes.
+3) Updated the signature of HumanSuperBioTransformer's simulateHumanSuperbioMetabolism function.
+
+v2.0.1
+========
+1) Cleaned code, and database.
+
+v2.0.0  (Major)
+===============
+1) Decoupled the knowledge base from the source code. Users can now include their own versions of the different tables (in .json files). Each of the covered biosystem must have at least the following files: biosystemEnzymes.json, biosystemsReactionORatios.json, biosystems.json, enzymeReactions.json, enzymes.json, metabolicReactions.json, pathways.json, reactionPrecedenceRules.json, sChemCategoryPathways.json. The content can be different from the default tables, but each file must have the same syntax.
+2) Added a configuration file that describes among others, the location to the database and models. (the cypreact model destination cannot be moved at this moment. This will change soon).
+3) While the license is GPL for the tool, and most of the knowledgebase, every piece of data from the database/ENV folder and/or related to the EnviPath data is subjected to the Creative 
+ Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) license.
+4) Changed the phaseIIfilter to v.1.0.2 (no update that would affect the prediction results).
+5) Updated SMARTS and SMIRKS strings for 2-Hydroxylation of 1,4-disubstituted benzene (BTMR0037).
+6) Added different name alternatives for some options (incl. phase2, envmicro).
+7) Add "envmicro" (in addition to env) as option for environmental microbial metabolism.
+8) Renamed "negativeSMARTS" to "excludedReactantSMARTS" in the description of metabolic reaction  objects.
+9) Updated reaction for 2-Hydroxylation of 1,4-disubstituted benzene (BTMR0037). IT was mistakenly applied to some mono-substituted benzenes.
+
+v1.1.7
+======
+1) PhaseII wasn't being executed properly after adding setOptionsTobType in BiotrnasformerExecutable: Fixed; 
+2) Replaced old Test classes with JUnit test classes, which are executed upon maven building; 
+3) Current version (from Version) is now parsed directly from the POM file; 
+4) Updated SMIRKS pattern for "_1_MONOACYLGLYCEROL_PHOSPHORYLATION" (BTMR0483); 
+5) Moved addPhysicoChemicalProperties() from utils.ChemStructureExplorer to utils.Utilities
+
+v1.1.6
+======
+
+1) Added more functions in the EnvmicroBtransformer class
+2) Corrected the sequencing order
+
+v1.1.5
+======
+
+1) Fixed a bug in the BioTransformerExecutable class to resolve a NullPointerException occurring when running the sequence option using SD files.
+
+
+v1.1.4
+======
+1) Added capabilities to identify metabolites (-cid) upon running a user-specified, ordered sequence of biotransformation steps.
+2) Created a universal biotransformer that facilitates the simulation of biotransformation sequences
+3) Solved an issue that resulted to empty results when running biotransformer sequences containing environmental microbial degradation modules.
+4) Renamed a few functions
+5) Updated the pom file, regenerated the Java Documentation
+
+v1.1.3
+======
+1) Added capabilities to run a user-specified, ordered sequence of biotransformation steps. e.g. 'cyp450:2; phaseII:1' for a sequence of 2 CYP450 metabolism steps, followed by 1 step of cojugation.
+2) Updated license terms wrt to the environmental microbial degradation module. USers must cite enviPath, when using the module. If using BioTransformer's environmental microbial degradation module 
+for commercial purposes, make sure to obtain the proper license from EnviPath (https://envipath.org/).
+
+v1.1.2
+======
+1) Updated the algorithm for the superbio, and hgut options. Polyphenols are processed differently.
+2) Added new chemical classes
+3) Updated the use of classification information for substrate-specificity prediction.
+4) Fixed an issue with the parsing of masses for compound identification for 'env' and 'superbio' options (BioTransformerExecutable).
+5) Updated validation protocol for command-line queries.
+6) Improved error capture for identification tasks, and prediction tasks.
+7) Moved some classification functions from ChemStructureExplorer to ChemicalClassFinder. 
+
+v1.1.1
+======
+1) Moved the database folder to src/main/resources/.
+2) Updated the BioSystem's code and the pom file  so that database files are imported as Resource streams.
+3) Updated the main class, so queries (metabolism prediction or metabolite identification tasks) are run for one compound at the time. So far, BioTransformer stops if it fails on one compound, and returns results for all successful predictions.
+4) Updated the README. file
+5) Updated the install script to cp the /jar file to the root folder instead of bin/.
+
+v1.0.0
+======
+1) Updated simulateGutMicrobialMetabolism() in HGutBTransformer to ensure list of biotransformations is added only if not null.
+2) Updated the POM file to add dependencies for phaseIIFilter and CypReact.
+3) Added a script to compile and package BioTransformer using maven.
+4) Added a version package that is used in the main class
+5) Updated the README file.
