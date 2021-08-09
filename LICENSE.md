@@ -1,7 +1,7 @@
 Copyright (c) 2017- Yannick Djoumbou Feunang, PhD
 
 
-BioTransformer is offered to the public as a freely acessible software package under the GNU LGPL, version 3 license.
+BioTransformer is offered to the public as a freely acessible software package under the GNU Lesser General Public License, version 2.1.
 
 Users are free to copy and redistribute the material in any medium or format. Moreover, they could modify, and build upon the material under the condition that they must give appropriate credit, provide links to the license, and indicate if changes were made. Furthermore, the above copyright notice and this permission notice must be included. Use and re-distribution of the these resources, in whole or in part, for commercial purposes requires explicit permission of the authors. We ask that all users of the BioTransformer software tool, the BioTransformer web server, or BioTransformerDB to cite the BioTransformer reference in any resulting publications, and to acknowledge the authors.
 
